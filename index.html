@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TwitFolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/6799f7af12.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- sidebar starts -->
+    <div class="sidebar">
+        <h2 class="twitt">TwitFolio <i class="fa-brands fa-x-twitter"></i></h2>
+        <div class="sidebarOption active" id="homeButton">
+            <span class="material-symbols-outlined">home</span>
+            <h2>Home</h2>
+        </div>
+
+        <div class="sidebarOption" id="exploreButton">
+            <span class="material-symbols-outlined">search</span>
+            <h2>Explore</h2>
+        </div>
+
+        <div class="sidebarOption" id="notificationsButton">
+            <span class="material-symbols-outlined">notifications</span>
+            <h2>Notifications</h2>
+            <div id="notificationsContainer">
+                <span id="notificationCount">0</span>
+            </div>
+        </div>
+        
+        <div class="sidebarOption" id="messagesButton">
+            <span class="material-symbols-outlined">mail</span>
+            <h2>Messages</h2>
+        </div>
+
+        <div class="sidebarOption" id="bookmarksButton" onclick="showBookmarks()">
+            <span class="material-symbols-outlined">bookmarks</span>
+            <h2>Bookmarks</h2>
+        </div>
+
+        <div class="sidebarOption" id="profileButton">
+            <span class="material-symbols-outlined">person</span>
+            <h2>Profile</h2>
+        </div>
+        <button class="sidebar__twit">Tweet</button>
+    </div>
+    <!-- sidebar ends -->
+    <!-- Profile section -->
+    <div id="profileSection" class="main-content" style="display: none;">
+        <div class="profile-section">
+            <div class="profile-header">
+                <div class="cover-photo"></div>
+                <div class="profile-photo"></div>
+                <div class="profile-info">
+                    <h2>Cristina Gail Rodelas</h2>
+                    <p>@tinarod</p>
+                </div>
+                <button class="edit-profile-btn">Edit Profile</button>
+            </div>
+            <div class="profile-tabs">
+                <div class="tab active">Tweets</div>
+                <div class="tab">Replies</div>
+                <div class="tab">Media</div>
+                <div class="tab">Likes</div>
+            </div>
+            <div class="profile-content">
+                <p>Your content goes here...</p>
+            </div>
+        </div>
+    </div>
+    <!-- Profile section ends -->
+    <!-- feed starts -->
+    <div class="feed" id="feed">
+        <div class="feed__header">
+            <h2>Home</h2>
+        </div>
+
+        <!-- tweetbox starts -->
+        <div class="tweetBox">
+            <form id="tweetForm">
+                <div class="tweetbox__input">
+                    <img src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png" 
+                    alt=""
+                >
+                <input type="text" placeholder="What's happening?" id="tweetInput">
+                </div>
+                <button class="tweetBox__tweetButton" type="submit">Tweet</button>
+            </form>
+        </div>
+        <!-- tweetbox ends -->
+
+        <!-- post start -->
+        <div id="postsContainer">
+            <div class="post">
+                <div class="post__avatar">
+                    <img src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png" 
+                    alt=""
+                />
+                </div>
+            <div class="post__body">
+                <div class="post__header">
+                    <div class="post__headerText">
+                    <h3>
+                        Cristina Gail Rodelas
+                        <span class="post__headerSpecial">
+                            <span class="material-symbols-outlined">verified</span>@tinarod
+                        </span>
+                    </h3>
+                    </div>
+                    <div class="post__headerDescription">
+                        <p>Feel the engine, live the dream 🚗💭</p>
+                    </div>
+                </div>
+
+                <img src="lambo.jpg" 
+                    alt=""
+                />
+                <div class="post__footer">
+                    <span class="material-symbols-outlined">repeat</span> <span>397538</span>
+                    <span class="material-symbols-outlined">favorite</span> <span>320958</span>
+                    <span class="material-symbols-outlined">publish</span> <span>219384</span>
+                    <span class="material-symbols-outlined bookmark" onclick="bookmarkPost(this)">bookmark</span>
+                </div>
+            </div>
+            </div>
+            <div class="post">
+                <div class="post__avatar">
+                    <img src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png" 
+                    alt=""
+                />
+                </div>
+            <div class="post__body">
+                <div class="post__header">
+                    <div class="post__headerText">
+                    <h3>
+                        Cristina Gail Rodelas
+                        <span class="post__headerSpecial">
+                            <span class="material-symbols-outlined">verified</span>@tinarod
+                        </span>
+                    </h3>
+                    </div>
+                    <div class="post__headerDescription">
+                        <p>Zero to sixty in the blink of an eye 👀⏱️</p>
+                    </div>
+                </div>
+                <img src="ferrari.jpg" 
+                    alt=""
+                />
+                <div class="post__footer">
+                    <span class="material-symbols-outlined retweet">repeat</span> <span>2048</span>
+                    <span class="material-symbols-outlined like" onclick="likePost(this)">favorite</span> 
+                    <span class="likeCount">320958</span>
+                    <span class="material-symbols-outlined share">publish</span> <span>40932</span>
+                    <span class="material-symbols-outlined bookmark" onclick="bookmarkPost(this)">bookmark</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- post ends -->
+    </div>
+    <!-- feed ends -->
+
+    <div class="notifications" id="bookmarksSection">
+        <div class="notifications__header">
+            <h2>Bookmarks</h2>
+        </div>
+        <div id="bookmarksContainer">
+            <!-- Bookmarked posts will be added here dynamically -->
+        </div>
+    </div>
+    <!-- notifications section -->
+    <div class="notifications" id="notificationsSection" style="display: none;">
+        <div class="notifications__header">
+            <h2>Notifications</h2>
+        </div>
+        <div id="notificationItemsContainer">
+            <!-- Dynamic notification items will be added here -->
+        </div>
+    </div>
+    <!-- notifications section ends -->
+
+    <!-- Chat section -->
+    <div id="chatSection" style="display: none;">
+        <div id="chatList" class="chat-list">
+            <input type="text" id="chatSearchInput" placeholder="Search followers to chat">
+            <div id="chatSuggestions"></div>
+            <div class="chat-user-divider">Users</div>
+            <!-- List of followers/following for chat -->
+            <div class="chat-user">
+                <img src="1.png" alt="Bianca Sophia Roxas" class="user-avatar">
+                <span class="user-name">Bianca Sophia Roxas</span>
+            </div>
+            <div class="chat-user">
+                <img src="2.png" alt="Nicole Patrice Torrero" class="user-avatar">
+                <span class="user-name">Nicole Patrice Torrero</span>
+            </div>
+            <div class="chat-user">
+                <img src="3.png" alt="Francis Raven Salamo" class="user-avatar">
+                <span class="user-name">Francis Raven Salamo</span>
+            </div>
+            <div class="chat-user">
+                <img src="3.png" alt="Gizelle Rada" class="user-avatar">
+                <span class="user-name">Gizelle Rada</span>
+            </div>
+        </div>
+        <div id="chatBox" class="chat-box">
+            <div class="chat-header">
+                <h3 id="chatUserName">Chat with User</h3>
+            </div>
+            <div class="chat-messages" id="messagesContainer">
+                <!-- Chat messages will be dynamically added here -->
+                <div class="message sent">
+                    <div class="message-content">
+                        Hello! How are you?
+                    </div>
+                </div>
+                <div class="message received">
+                    <div class="message-content">
+                        I'm good, thanks! How about you?
+                    </div>
+                </div>
+            </div>
+            <form id="messageForm" class="message-form">
+                <input type="text" id="messageInput" class="message-input" placeholder="Type a message" required>
+                <button type="submit" class="send-button">Send</button>
+            </form>
+        </div>
+    </div>
+    <div id="searchResultsSection" class="section" style="display: none;">
+        <div id="searchResultsContainer"></div>
+    </div>
+    <!-- widgets starts -->
+    <div class="widgets" id="exploreSection" style="display: none;">
+        <div class="widgets__input">
+            <span class="material-symbols-outlined">search</span>
+            <input type="text" id="searchBar" placeholder="Search Twitter">
+        </div>
+        <div class="widgets__widgetContainer">
+            <h2>What's happening?</h2>
+            <blockquote class="twitter-tweet"><p lang="en" dir="ltr">
+                At dawn from the gateway to Mars, the launch of Starship’s second flight test 
+                <a href="https://t.co/ffKnsVKwG4">pic.twitter.com/ffKnsVKwG4</a></p>&mdash; SpaceX (@SpaceX) 
+                <a href="https://twitter.com/SpaceX/status/1732824684683784516?ref_src=twsrc%5Etfw">December 7, 2023</a></blockquote> 
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+    </div>
+    <button class="scrollButton" id="scrollButton">&#x2193;</button>
+    </div>
+    <!-- widgets ends -->
+    <script src="script.js"></script>
+</body>
+</html>
